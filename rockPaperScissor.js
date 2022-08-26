@@ -25,22 +25,24 @@ function playRound() {
 	if (playerSelection === computerSelection) {
 		console.log('One of you must loos! play again!');
 	}
-
-	else {
-		// scissors wins paper 
-		if (playerSelection === rosci[2] && computerSelection === rosci[1]) {
-			console.log('Scissor')
-		}
-		// paper wins rock 
-		else if (playerSelection === rosci[1] && computerSelection === rosci[0]) {
-			console.log('Paper')
-		}
-		// rock wins scissor
-		else{
-			console.log('Rock')
-		}
+	// scissors wins paper 
+	else if (playerSelection === rosci[2] && computerSelection === rosci[1]) {
+		console.log('player win');
+	}
+	// paper wins rock 
+	else if (playerSelection === rosci[1] && computerSelection === rosci[0]) {
+		console.log('player win');
+	}
+	// rock wins scissor
+	else if (playerSelection === rosci[0] && computerSelection === rosci[2]) {
+		console.log('player win');
+	}
+	else{
+		console.log('compouter win')
 	}
 }
+
+
 function game() {
 	for (let i = 0; i < 5; i++) {
 		console.log(playRound());
