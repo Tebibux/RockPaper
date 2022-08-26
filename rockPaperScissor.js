@@ -1,3 +1,6 @@
+// players of the game human and computer
+let player;
+let computer;
 // global array 
 let rosci = ['ROCK', 'PAPER', 'SCISSOR']
 
@@ -23,39 +26,37 @@ function playRound() {
 	// winnig condion [0:rock, 1:paper, 2:scissor]
 	// if the same draw
 	if (playerSelection === computerSelection) {
-		console.log('One of you must loos! play again!');
+		return player;
 	}
-	// scissors wins paper 
+	// scissors wins paper // player wins computer
 	else if (playerSelection === rosci[2] && computerSelection === rosci[1]) {
-		console.log('player win');
+		return player;
 	}
-	// paper wins rock 
+	// paper wins rock // player wins computer
 	else if (playerSelection === rosci[1] && computerSelection === rosci[0]) {
-		console.log('player win');
+		return player;
 	}
-	// rock wins scissor
+	// rock wins scissor// player wins computer
 	else if (playerSelection === rosci[0] && computerSelection === rosci[2]) {
-		console.log('player win');
+		return player;
 	}
-	else{
-		console.log('compouter win')
+	// the above couldn't meet the compuer wins
+	else {
+		return computer;
 	}
 }
 
 
 function game() {
+	// counting the score from the start
+	let plaWin = 0
+	let compWin = 0
 	for (let i = 0; i < 5; i++) {
-		console.log(playRound());
+		if (player === playRound()) {
+			console.log(player);
+		}
+		else {
+			console.log(computer);
+		}
 	}
 }
-// //if playerSelection ==  computerSelection
-// if (playerSelection ==! computerSelection) {
-// 	// 		return = "Message!"
-// 	return ('You Lose! Paper beats Rock');
-// }
-
-
-// }
-
-
-
