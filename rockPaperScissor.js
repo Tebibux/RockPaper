@@ -10,18 +10,37 @@ msgBox.className = 'message-box';
 msgBox.id = 'message-box-head';
 var message = document.createElement('h2');
 message.textContent = ' Well come to the game';
-msgBox.appendChild(message)
-container.appendChild(msgBox)
-console.log(msgBox)
+msgBox.appendChild(message);
+container.appendChild(msgBox);
 // start button
 var btnStart = document.createElement('button');
+btnStart.className = 'btn-start';
+btnStart.id = 'btn-start';
+btnStart.innerText = 'Start';
+container.append(btnStart);
 // play button
+var playBox = document.createElement('div');
+playBox.id = 'playBox';
+playBox.className = 'play-box';
+container.append(playBox);
 // play button rock
 var btnRock = document.createElement('button');
+btnRock.className = 'btn-rock';
+btnRock.id = 'btn-rock';
+btnRock.innerText = 'Rock';
+playBox.append(btnRock);
 // play button paper
 var btnPaper = document.createElement('button');
+btnPaper.className = 'btn-paper';
+btnPaper.id = 'btn-paper';
+btnPaper.innerText = 'Paper';
+playBox.append(btnPaper);
 // play button scissor
 var btnScissor = document.createElement('button');
+btnScissor.className = 'btn-scissor';
+btnScissor.id = 'btn-scissor';
+btnScissor.innerText = 'Scissor';
+playBox.append(btnScissor);
 
 // creating msg area
 //  report message win or loose
