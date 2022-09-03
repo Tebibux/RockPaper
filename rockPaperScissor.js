@@ -1,3 +1,50 @@
+// Creating UI using DOM vanilla js
+
+// create the main container 
+var container = document.getElementById('container');
+
+// creating buttons and attributs
+// message box
+var msgBox = document.createElement('div');
+msgBox.className = 'message-box';
+msgBox.id = 'message-box-head';
+var message = document.createElement('h2');
+message.textContent = ' Well come to the game';
+msgBox.appendChild(message)
+container.appendChild(msgBox)
+console.log(msgBox)
+// start button
+var btnStart = document.createElement('button');
+// play button
+// play button rock
+var btnRock = document.createElement('button');
+// play button paper
+var btnPaper = document.createElement('button');
+// play button scissor
+var btnScissor = document.createElement('button');
+
+// creating msg area
+//  report message win or loose
+var msgReport = document.createElement('div');
+// socore message
+var msgScore = document.createElement('div');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // players of the game human and computer
 let player;
 let computer;
@@ -57,7 +104,7 @@ function game() {
 	let plaWin = 0
 	let compWin = 0
 	let bTs = 0
-	for (let i = 0; i < 5; i++) {
+	for (let i = 0; i < 3; i++) {
 		roundPlay = playRound()
 		// add the value depending on return of play round
 		// add 1 each time human win
