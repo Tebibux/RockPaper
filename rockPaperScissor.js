@@ -34,7 +34,7 @@ var btnRock = document.createElement('button');
 btnRock.className = 'btn-rock';
 btnRock.id = 'btn-rock';
 btnRock.innerText = 'Rock';
-btnRock.value = 'ROCK';
+btnRock.value = '0';
 playBox.append(btnRock);
 
 // play button paper
@@ -42,7 +42,7 @@ var btnPaper = document.createElement('button');
 btnPaper.className = 'btn-paper';
 btnPaper.id = 'btn-paper';
 btnPaper.innerText = 'Paper';
-btnPaper.value = 'PAPER';
+btnPaper.value = '1';
 playBox.append(btnPaper);
 
 // play button scissor
@@ -50,7 +50,7 @@ var btnScissor = document.createElement('button');
 btnScissor.className = 'btn-scissor';
 btnScissor.id = 'btn-scissor';
 btnScissor.innerText = 'Scissor';
-btnScissor.value = 'SCISSOR';
+btnScissor.value = '2';
 playBox.append(btnScissor);
 
 // creating msg area
@@ -66,7 +66,7 @@ msgScore.id = 'msg-score'
 
 
 btnStart.addEventListener('click', startGame);
-function startGame(e){
+function startGame(e) {
 	// playing button appear in the playBox using css style.
 	// element of the playbox will have flex 
 	// 		as the message and other element added
@@ -81,10 +81,9 @@ function startGame(e){
 
 }
 
-btnRock.addEventListener('click', () => btnRock.value)
-btnPaper.addEventListener('click', () => {console.log(btnPaper.value)})
-btnScissor.addEventListener('click', () => {console.log(btnScissor.value)})
-
+btnRock.onclick = function (){
+	console.log(btnRock.value)
+}
 
 
 
