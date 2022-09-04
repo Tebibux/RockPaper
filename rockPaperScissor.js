@@ -45,16 +45,12 @@ playBox.append(btnScissor);
 // creating msg area
 //  report message win or loose
 var msgReport = document.createElement('div');
+msgReport.className = 'msg-report';
+msgReport.id = 'msg-report'
 // socore message
 var msgScore = document.createElement('div');
-
-
-
-
-
-
-
-
+msgScore.className = 'msg-score';
+msgScore.id = 'msg-score'
 
 
 
