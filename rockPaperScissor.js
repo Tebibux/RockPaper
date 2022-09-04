@@ -34,7 +34,7 @@ var btnRock = document.createElement('button');
 btnRock.className = 'btn-rock';
 btnRock.id = 'btn-rock';
 btnRock.innerText = 'Rock';
-btnRock.value = '0';
+btnRock.value = 'ROCK';
 playBox.append(btnRock);
 
 // play button paper
@@ -42,7 +42,7 @@ var btnPaper = document.createElement('button');
 btnPaper.className = 'btn-paper';
 btnPaper.id = 'btn-paper';
 btnPaper.innerText = 'Paper';
-btnPaper.value = '1';
+btnPaper.value = 'PAPER';
 playBox.append(btnPaper);
 
 // play button scissor
@@ -50,7 +50,7 @@ var btnScissor = document.createElement('button');
 btnScissor.className = 'btn-scissor';
 btnScissor.id = 'btn-scissor';
 btnScissor.innerText = 'Scissor';
-btnScissor.value = '2';
+btnScissor.value = 'SCISSOR';
 playBox.append(btnScissor);
 
 // creating msg area
@@ -81,10 +81,7 @@ function startGame(e) {
 
 }
 
-btnRock.onclick = function (){
-	console.log(btnRock.value)
-}
-
+btnRock.addEventListener('click', playRound);
 
 
 
@@ -110,7 +107,7 @@ function getComputerChoice() {
 
 function playRound() {
 	// get the user input and convert to upuper case
-	const playerSelection = (prompt('Enter one of "Rock", "paper" "scissor":')).toUpperCase();
+	const playerSelection = 0;
 	// get the compter input
 	const computerSelection = getComputerChoice();
 	// winnig condition [0:rock, 1:paper, 2:scissor]
@@ -142,35 +139,36 @@ function playRound() {
 }
 
 
-function game() {
-	// counting the score from the start and bTs(Both Team to Score)
-	let plaWin = 0
-	let compWin = 0
-	let bTs = 0
-	for (let i = 0; i < 3; i++) {
-		roundPlay = playRound()
-		// add the value depending on return of play round
-		// add 1 each time human win
-		if (roundPlay === 1) {
-			plaWin += 1;
-		}
-		// add 1 each time computer win
-		else if (roundPlay === 2) {
-			compWin += 1;
-		}
-		// add 1 each time score none
-		else {
-			bTs += 1;
-		}
-	}
-	// consol log winner of the game
-	// human win
-	if (plaWin > compWin) {
-		console.log(`Human won by ${plaWin} to ${compWin}`);
-	}
-	// computer win
-	else {
-		console.log(`Computer won by ${compWin} to ${plaWin}`);
-	}
-	console.log(`Equal result is ${bTs}`)
-}
+
+// function game() {
+// 	// counting the score from the start and bTs(Both Team to Score)
+// 	let plaWin = 0
+// 	let compWin = 0
+// 	let bTs = 0
+// 	for (let i = 0; i < 3; i++) {
+// 		roundPlay = playRound()
+// 		// add the value depending on return of play round
+// 		// add 1 each time human win
+// 		if (roundPlay === 1) {
+// 			plaWin += 1;
+// 		}
+// 		// add 1 each time computer win
+// 		else if (roundPlay === 2) {
+// 			compWin += 1;
+// 		}
+// 		// add 1 each time score none
+// 		else {
+// 			bTs += 1;
+// 		}
+// 	}
+// 	// consol log winner of the game
+// 	// human win
+// 	if (plaWin > compWin) {
+// 		console.log(`Human won by ${plaWin} to ${compWin}`);
+// 	}
+// 	// computer win
+// 	else {
+// 		console.log(`Computer won by ${compWin} to ${plaWin}`);
+// 	}
+// 	console.log(`Equal result is ${bTs}`)
+// }
