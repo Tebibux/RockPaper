@@ -58,6 +58,7 @@ playBox.append(btnScissor);
 var msgReport = document.createElement('div');
 msgReport.className = 'msg-report';
 msgReport.id = 'msg-report'
+container.appendChild(msgReport);
 // socore message
 var msgScore = document.createElement('div');
 msgScore.className = 'msg-score';
@@ -82,9 +83,9 @@ function startGame(e) {
 
 }
 
-btnRock.addEventListener('click', playRound);
-btnPaper.addEventListener('click', playRound);
-btnScissor.addEventListener('click', playRound);
+btnRock.addEventListener('click', playerChoose);
+btnPaper.addEventListener('click', playerChoose);
+btnScissor.addEventListener('click', playerChoose);
 
 
 
@@ -104,96 +105,89 @@ function getComputerChoice() {
 		return rosci[1];
 	} else {
 		return rosci[2];
-
 	}
 }
-function playRound(e) {
+function playerChoose(e) {
 	// if (btnRock == true) 
 	if (e.target == btnRock) {
-		msgScore.innerHTML = '<h1>' + btnRock.value + '</h1>';
+		msgScore.innerHTML = '<h5> Player chose: ' + btnRock.value + '<br> Computer choose ' + getComputerChoice() + '</h5>';
+		return btnRock.value
 	}
-	if (e.target == btnPaper){
-		msgScore.innerHTML = '<h1>' + btnPaper.value + '</h1>';
+	if (e.target == btnPaper) {
+		msgScore.innerHTML = '<h5> Player chose: ' + btnPaper.value + '<br> Computer choose ' + getComputerChoice() + '</h5>';
+		return btnRock.value
 	}
-	if (e.target == btnScissor){
-		msgScore.innerHTML = '<h1>' + btnScissor.value + '</h1>';
+	if (e.target == btnScissor) {
+		msgScore.innerHTML = '<h5> Player chose: ' + btnScissor.value + '<br> Computer choose ' + getComputerChoice() + '</h5>';
+		return btnRock.value
+	}
+}
+
+
+function playRound() {
+	// recive the value from pressed  button
+	const playerSelection = playerChoose();
+	// get the compter input
+	const computerSelection = getComputerChoice();
+	// winnig condition [0:rock, 1:paper, 2:scissor]
+	// if the same draw
+	if (playerSelection === computerSelection) {
+		// return player;
+		return 0;
+	}
+	// scissors wins paper // player wins computer
+	else if (playerSelection === rosci[2] && computerSelection === rosci[1]) {
+		// return player;
+		return 1;
+	}
+	// paper wins rock // player wins computer
+	else if (playerSelection === rosci[1] && computerSelection === rosci[0]) {
+		// return player;
+		return 1;
+	}
+	// rock wins scissor// player wins computer
+	else if (playerSelection === rosci[0] && computerSelection === rosci[2]) {
+		// return player;
+		return 1;
+	}
+	// the above couldn't meet the compuer wins
+	else {
+		// return computer;
+		return 2;
 	}
 }
 
 
 
-
-
-
-
-
-
-
-
-// function playRound() {
-// 	// get the user input and convert to upuper case
-// 	const playerSelection = 0;
-// 	// get the compter input
-// 	const computerSelection = getComputerChoice();
-// 	// winnig condition [0:rock, 1:paper, 2:scissor]
-// 	// if the same draw
-// 	if (playerSelection === computerSelection) {
-// 		// return player;
-// 		return 0;
-// 	}
-// 	// scissors wins paper // player wins computer
-// 	else if (playerSelection === rosci[2] && computerSelection === rosci[1]) {
-// 		// return player;
-// 		return 1;
-// 	}
-// 	// paper wins rock // player wins computer
-// 	else if (playerSelection === rosci[1] && computerSelection === rosci[0]) {
-// 		// return player;
-// 		return 1;
-// 	}
-// 	// rock wins scissor// player wins computer
-// 	else if (playerSelection === rosci[0] && computerSelection === rosci[2]) {
-// 		// return player;
-// 		return 1;
-// 	}
-// 	// the above couldn't meet the compuer wins
-// 	else {
-// 		// return computer;
-// 		return 2;
-// 	}
-// }
-
-
-
-// function game() {
-// 	// counting the score from the start and bTs(Both Team to Score)
-// 	let plaWin = 0
-// 	let compWin = 0
-// 	let bTs = 0
-// 	for (let i = 0; i < 3; i++) {
-// 		roundPlay = playRound()
-// 		// add the value depending on return of play round
-// 		// add 1 each time human win
-// 		if (roundPlay === 1) {
-// 			plaWin += 1;
-// 		}
-// 		// add 1 each time computer win
-// 		else if (roundPlay === 2) {
-// 			compWin += 1;
-// 		}
-// 		// add 1 each time score none
-// 		else {
-// 			bTs += 1;
-// 		}
-// 	}
-// 	// consol log winner of the game
-// 	// human win
-// 	if (plaWin > compWin) {
-// 		console.log(`Human won by ${plaWin} to ${compWin}`);
-// 	}
-// 	// computer win
-// 	else {
-// 		console.log(`Computer won by ${compWin} to ${plaWin}`);
-// 	}
-// 	console.log(`Equal result is ${bTs}`)
-// }
+function game() {
+	// counting the score from the start and bTs(Both Team to Score)
+	let plaWin = 0
+	let compWin = 0
+	let bTs = 0
+	for (let i = 0; i < 5; i++) {
+		roundPlay = playRound();
+		// add the value depending on return of play round
+		// add 1 each time human win
+		if (roundPlay === 1) {
+			plaWin += 1;
+		}
+		// add 1 each time computer win
+		else if (roundPlay === 2) {
+			compWin += 1;
+		}
+		// add 1 each time score none
+		else {
+			bTs += 1;
+		}
+	}
+	// consol log winner of the game
+	// human win
+	if (plaWin > compWin) {
+		msgReport.innerText = `Human won by ${plaWin} to ${compWin}`;
+	}
+	// computer win
+	else {
+		msgReport.innerText = `Computer won by ${compWin} to ${plaWin}`;
+	}
+	msgReport.innerText = `Equal result is ${bTs}`;
+}

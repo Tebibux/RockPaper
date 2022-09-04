@@ -16,7 +16,8 @@
 	margin-top: 30px;
 	width: 80%;
 	align-items: center;
-	justify-content: space-evenly;
+	justify-content: center;
+	gap: 35px;
 	
 }
 .message-box{
@@ -29,7 +30,7 @@
 button {
 	width: 70px;
 	height: 30px;
-	margin-top: 10px;
+	margin: 10px 0;
 	font-size: 18px;
 	font-weight: bold;
 }
