@@ -9,8 +9,12 @@ var msgBox = document.createElement('div');
 msgBox.className = 'message-box';
 msgBox.id = 'message-box-head';
 var message = document.createElement('h2');
-message.textContent = ' Well come to the game';
+var message1 = document.createElement('h5');
+message1.textContent = 'You can\'t lose if you don\'t play';
+message.textContent = ' Well come to the game ';
+
 msgBox.appendChild(message);
+msgBox.appendChild(message1);
 container.appendChild(msgBox);
 // start button
 var btnStart = document.createElement('button');
@@ -18,28 +22,35 @@ btnStart.className = 'btn-start';
 btnStart.id = 'btn-start';
 btnStart.innerText = 'Start';
 container.append(btnStart);
-// play button
+
+// playing area
 var playBox = document.createElement('div');
 playBox.id = 'playBox';
 playBox.className = 'play-box';
 container.append(playBox);
+
 // play button rock
 var btnRock = document.createElement('button');
 btnRock.className = 'btn-rock';
 btnRock.id = 'btn-rock';
 btnRock.innerText = 'Rock';
+btnRock.value = 'ROCK';
 playBox.append(btnRock);
+
 // play button paper
 var btnPaper = document.createElement('button');
 btnPaper.className = 'btn-paper';
 btnPaper.id = 'btn-paper';
 btnPaper.innerText = 'Paper';
+btnPaper.value = 'PAPER';
 playBox.append(btnPaper);
+
 // play button scissor
 var btnScissor = document.createElement('button');
 btnScissor.className = 'btn-scissor';
 btnScissor.id = 'btn-scissor';
 btnScissor.innerText = 'Scissor';
+btnScissor.value = 'SCISSOR';
 playBox.append(btnScissor);
 
 // creating msg area
@@ -54,7 +65,25 @@ msgScore.id = 'msg-score'
 
 
 
+btnStart.addEventListener('click', startGame);
+function startGame(e){
+	// playing button appear in the playBox using css style.
+	// element of the playbox will have flex 
+	// 		as the message and other element added
+	playBox.style.display = 'flex';
+	// btnStart will disapper from the page after the game is stared
+	// and the the greating message also will disappear after the start
+	btnStart.style.display = 'none';
+	message1.style.display = 'none';
+	var message2 = document.createElement('h5');
+	message2.innerHTML = 'You Started it, if you don\'t play you LOSE';
+	msgBox.appendChild(message2);
 
+}
+
+btnRock.addEventListener('click', () => btnRock.value)
+btnPaper.addEventListener('click', () => {console.log(btnPaper.value)})
+btnScissor.addEventListener('click', () => {console.log(btnScissor.value)})
 
 
 
@@ -85,7 +114,7 @@ function playRound() {
 	const playerSelection = (prompt('Enter one of "Rock", "paper" "scissor":')).toUpperCase();
 	// get the compter input
 	const computerSelection = getComputerChoice();
-	// winnig condion [0:rock, 1:paper, 2:scissor]
+	// winnig condition [0:rock, 1:paper, 2:scissor]
 	// if the same draw
 	if (playerSelection === computerSelection) {
 		// return player;
