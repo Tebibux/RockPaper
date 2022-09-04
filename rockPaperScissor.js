@@ -62,6 +62,7 @@ msgReport.id = 'msg-report'
 var msgScore = document.createElement('div');
 msgScore.className = 'msg-score';
 msgScore.id = 'msg-score'
+container.appendChild(msgScore);
 
 
 
@@ -82,6 +83,8 @@ function startGame(e) {
 }
 
 btnRock.addEventListener('click', playRound);
+btnPaper.addEventListener('click', playRound);
+btnScissor.addEventListener('click', playRound);
 
 
 
@@ -104,39 +107,61 @@ function getComputerChoice() {
 
 	}
 }
-
-function playRound() {
-	// get the user input and convert to upuper case
-	const playerSelection = 0;
-	// get the compter input
-	const computerSelection = getComputerChoice();
-	// winnig condition [0:rock, 1:paper, 2:scissor]
-	// if the same draw
-	if (playerSelection === computerSelection) {
-		// return player;
-		return 0;
+function playRound(e) {
+	// if (btnRock == true) 
+	if (e.target == btnRock) {
+		msgScore.innerHTML = '<h1>' + btnRock.value + '</h1>';
 	}
-	// scissors wins paper // player wins computer
-	else if (playerSelection === rosci[2] && computerSelection === rosci[1]) {
-		// return player;
-		return 1;
+	if (e.target == btnPaper){
+		msgScore.innerHTML = '<h1>' + btnPaper.value + '</h1>';
 	}
-	// paper wins rock // player wins computer
-	else if (playerSelection === rosci[1] && computerSelection === rosci[0]) {
-		// return player;
-		return 1;
-	}
-	// rock wins scissor// player wins computer
-	else if (playerSelection === rosci[0] && computerSelection === rosci[2]) {
-		// return player;
-		return 1;
-	}
-	// the above couldn't meet the compuer wins
-	else {
-		// return computer;
-		return 2;
+	if (e.target == btnScissor){
+		msgScore.innerHTML = '<h1>' + btnScissor.value + '</h1>';
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+// function playRound() {
+// 	// get the user input and convert to upuper case
+// 	const playerSelection = 0;
+// 	// get the compter input
+// 	const computerSelection = getComputerChoice();
+// 	// winnig condition [0:rock, 1:paper, 2:scissor]
+// 	// if the same draw
+// 	if (playerSelection === computerSelection) {
+// 		// return player;
+// 		return 0;
+// 	}
+// 	// scissors wins paper // player wins computer
+// 	else if (playerSelection === rosci[2] && computerSelection === rosci[1]) {
+// 		// return player;
+// 		return 1;
+// 	}
+// 	// paper wins rock // player wins computer
+// 	else if (playerSelection === rosci[1] && computerSelection === rosci[0]) {
+// 		// return player;
+// 		return 1;
+// 	}
+// 	// rock wins scissor// player wins computer
+// 	else if (playerSelection === rosci[0] && computerSelection === rosci[2]) {
+// 		// return player;
+// 		return 1;
+// 	}
+// 	// the above couldn't meet the compuer wins
+// 	else {
+// 		// return computer;
+// 		return 2;
+// 	}
+// }
 
 
 
