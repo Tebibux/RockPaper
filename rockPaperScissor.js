@@ -55,7 +55,7 @@ playBox.append(btnScissor);
 
 // creating msg area
 //  report message win or loose
-var msgReport = document.createElement('div');
+var msgReport = document.createElement('h4');
 msgReport.className = 'msg-report';
 msgReport.id = 'msg-report'
 container.appendChild(msgReport);
@@ -107,22 +107,23 @@ function getComputerChoice() {
 		return rosci[2];
 	}
 }
+var i = 0;
 function playerChoose(e) {
 	// if (btnRock == true) 
+	 i += 1;
 	if (e.target == btnRock) {
-		msgScore.innerHTML = '<h5> Player chose: ' + btnRock.value + '<br> Computer choose ' + getComputerChoice() + '</h5>';
+		msgScore.innerHTML = '<h5> You Choose: ' + btnRock.value + '<br> Computer choose ' + getComputerChoice() + '</h5>';
 		return btnRock.value
 	}
 	if (e.target == btnPaper) {
-		msgScore.innerHTML = '<h5> Player chose: ' + btnPaper.value + '<br> Computer choose ' + getComputerChoice() + '</h5>';
+		msgScore.innerHTML = '<h5> You Choose: ' + btnPaper.value + '<br> Computer choose ' + getComputerChoice() + '</h5>';
 		return btnRock.value
 	}
 	if (e.target == btnScissor) {
-		msgScore.innerHTML = '<h5> Player chose: ' + btnScissor.value + '<br> Computer choose ' + getComputerChoice() + '</h5>';
+		msgScore.innerHTML = '<h5> You Choose: ' + btnScissor.value + '<br> Computer choose ' + getComputerChoice() + '</h5>';
 		return btnRock.value
 	}
 }
-
 
 function playRound() {
 	// recive the value from pressed  button
@@ -159,35 +160,93 @@ function playRound() {
 
 
 
-function game() {
-	// counting the score from the start and bTs(Both Team to Score)
-	let plaWin = 0
-	let compWin = 0
-	let bTs = 0
-	for (let i = 0; i < 5; i++) {
-		roundPlay = playRound();
-		// add the value depending on return of play round
-		// add 1 each time human win
-		if (roundPlay === 1) {
-			plaWin += 1;
-		}
-		// add 1 each time computer win
-		else if (roundPlay === 2) {
-			compWin += 1;
-		}
-		// add 1 each time score none
-		else {
-			bTs += 1;
-		}
-	}
-	// consol log winner of the game
-	// human win
-	if (plaWin > compWin) {
-		msgReport.innerText = `Human won by ${plaWin} to ${compWin}`;
-	}
-	// computer win
-	else {
-		msgReport.innerText = `Computer won by ${compWin} to ${plaWin}`;
-	}
-	msgReport.innerText = `Equal result is ${bTs}`;
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// function game(){
+	// // counting the score from the start and bTs(Both Team to Score)
+	// let plaWin = 0
+	// let compWin = 0
+	// let bTs = 0
+	// roundPlay = playRound();
+	// for (let i = 0; i < 5; i++) {
+		
+	// 	// add the value depending on return of play round
+	// 	// add 1 each time human win
+	// 	if (roundPlay === 1) {
+	// 		plaWin += 1;
+	// 	}
+	// 	// add 1 each time computer win
+	// 	else if (roundPlay === 2) {
+	// 		compWin += 1;
+	// 	}
+	// 	// add 1 each time score none
+	// 	else {
+	// 		bTs += 1;
+	// 	}
+	// }
+	// // consol log winner of the game
+	// // human win
+	// if (plaWin > compWin) {
+	// 	msgReport.innerText = `Human won by ${plaWin} to ${compWin}`;
+	// }
+	// // computer win
+	// else {
+	// 	msgReport.innerText = `Computer won by ${compWin} to ${plaWin}`;
+	// }
+	// msgReport.innerText = `Equal result is ${bTs}`;
+// }
