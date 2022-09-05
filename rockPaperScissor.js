@@ -65,8 +65,6 @@ msgScore.className = 'msg-score';
 msgScore.id = 'msg-score'
 container.appendChild(msgScore);
 
-
-
 btnStart.addEventListener('click', startGame);
 function startGame(e) {
 	// playing button appear in the playBox using css style.
@@ -80,21 +78,21 @@ function startGame(e) {
 	var message2 = document.createElement('h5');
 	message2.innerHTML = 'You Started it, if you don\'t play you LOSE';
 	msgBox.appendChild(message2);
-
 }
 
 btnRock.addEventListener('click', playerChoose);
 btnPaper.addEventListener('click', playerChoose);
 btnScissor.addEventListener('click', playerChoose);
 
-
-
 // players of the game human and computer
 let player;
 let computer;
 // global array 
-let rosci = ['ROCK', 'PAPER', 'SCISSOR']
-
+let rosci = ['ROCK', 'SCISSOR', 'PAPER']
+var i = 0;
+var j = 0;
+let scoRecOfComp = 0;
+let scoRecOfPly = 0;
 // generate a random number from 1 - 3
 
 function getComputerChoice() {
@@ -107,146 +105,60 @@ function getComputerChoice() {
 		return rosci[2];
 	}
 }
-var i = 0;
-function playerChoose(e) {
+function playerChoose() {
 	// if (btnRock == true) 
-	 i += 1;
-	if (e.target == btnRock) {
-		msgScore.innerHTML = '<h5> You Choose: ' + btnRock.value + '<br> Computer choose ' + getComputerChoice() + '</h5>';
-		return btnRock.value
+	// store the comptuer choose so it can't change during comparation
+	i += 1;
+	let playerS = '';
+	let compChoseValue = getComputerChoice();
+	if (this.id == btnRock.id) {
+		playerS = this.value;
+		msgScore.innerText = `You Choose: ${btnRock.value} Computer choose ${compChoseValue}`;
+		if (btnRock.value === compChoseValue) {
+			msgScore.innerText.append = '`Tie`';
+			j += 1;
+		}
+		else if (btnRock.value != compChoseValue) {
+			if ((btnRock.value === rosci[0]) && compChoseValue === rosci[1]) scoRecOfPly += 1;
+			console.log(`${btnRock.value} is not equal to ${compChoseValue}`)
+		}
 	}
-	if (e.target == btnPaper) {
-		msgScore.innerHTML = '<h5> You Choose: ' + btnPaper.value + '<br> Computer choose ' + getComputerChoice() + '</h5>';
-		return btnRock.value
+	if (this.id == btnPaper.id) {
+		playerS = this.value;
+		console.log(i += 1)
+		msgScore.innerText = `You Choose: ${playerS} Computer choose ${compChoseValue}  `;
+		// return btnPaper.value;
+		if (btnPaper.value === compChoseValue) {
+			msgScore.innerText= '`Tie`';
+			j += 1;
+		}
+		else if (btnPaper.value != compChoseValue) {
+			if ((btnPaper.value === rosci[0]) && compChoseValue === rosci[1]) scoRecOfPly += 1;
+			console.log(`${btnPaper.value} is not equal to ${compChoseValue}`)
+		}
 	}
-	if (e.target == btnScissor) {
-		msgScore.innerHTML = '<h5> You Choose: ' + btnScissor.value + '<br> Computer choose ' + getComputerChoice() + '</h5>';
-		return btnRock.value
+	if (this.id == btnScissor.id) {
+		playerS = this.value;
+		console.log(i += 1)
+		msgScore.innerText = `You Choose: ${btnScissor.value} Computer choose ${compChoseValue}  `;
+		// return btnScissor.value;
+		if (btnScissor.value === compChoseValue) {
+			msgScore.innerText = '`Tie`';
+			j += 1;
+		}
+		else if (btnScissor.value != compChoseValue) {
+			if ((btnScissor.value === rosci[0]) && compChoseValue === rosci[1]) scoRecOfPly += 1;
+			console.log(`${btnScissor.value} is not equal to ${compChoseValue}`)
+		}
 	}
+	if (i === 5) {
+		msgBox.style.display = 'none';
+		playBox.style.display = 'none';
+		msgScore.innerText = '';
+	}
+	console.log(`comp increase ${scoRecOfComp}`);
+	console.log(`player increase ${scoRecOfPly}`);
+	console.log(`player ${playerS} computer ${compChoseValue}`)
+	console.log(`i state ${i} player value ${scoRecOfPly} || computer vlaue ${scoRecOfComp} tie result ${j}`)
 }
 
-function playRound() {
-	// recive the value from pressed  button
-	const playerSelection = playerChoose();
-	// get the compter input
-	const computerSelection = getComputerChoice();
-	// winnig condition [0:rock, 1:paper, 2:scissor]
-	// if the same draw
-	if (playerSelection === computerSelection) {
-		// return player;
-		return 0;
-	}
-	// scissors wins paper // player wins computer
-	else if (playerSelection === rosci[2] && computerSelection === rosci[1]) {
-		// return player;
-		return 1;
-	}
-	// paper wins rock // player wins computer
-	else if (playerSelection === rosci[1] && computerSelection === rosci[0]) {
-		// return player;
-		return 1;
-	}
-	// rock wins scissor// player wins computer
-	else if (playerSelection === rosci[0] && computerSelection === rosci[2]) {
-		// return player;
-		return 1;
-	}
-	// the above couldn't meet the compuer wins
-	else {
-		// return computer;
-		return 2;
-	}
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// function game(){
-	// // counting the score from the start and bTs(Both Team to Score)
-	// let plaWin = 0
-	// let compWin = 0
-	// let bTs = 0
-	// roundPlay = playRound();
-	// for (let i = 0; i < 5; i++) {
-		
-	// 	// add the value depending on return of play round
-	// 	// add 1 each time human win
-	// 	if (roundPlay === 1) {
-	// 		plaWin += 1;
-	// 	}
-	// 	// add 1 each time computer win
-	// 	else if (roundPlay === 2) {
-	// 		compWin += 1;
-	// 	}
-	// 	// add 1 each time score none
-	// 	else {
-	// 		bTs += 1;
-	// 	}
-	// }
-	// // consol log winner of the game
-	// // human win
-	// if (plaWin > compWin) {
-	// 	msgReport.innerText = `Human won by ${plaWin} to ${compWin}`;
-	// }
-	// // computer win
-	// else {
-	// 	msgReport.innerText = `Computer won by ${compWin} to ${plaWin}`;
-	// }
-	// msgReport.innerText = `Equal result is ${bTs}`;
-// }
