@@ -106,59 +106,82 @@ function getComputerChoice() {
 	}
 }
 function playerChoose() {
-	// if (btnRock == true) 
-	// store the comptuer choose so it can't change during comparation
 	i += 1;
+	// recive the value of the button
 	let playerS = '';
+	// store the comptuer choose so it can't change during comparation
 	let compChoseValue = getComputerChoice();
 	if (this.id == btnRock.id) {
 		playerS = this.value;
-		msgScore.innerText = `You Choose: ${btnRock.value} Computer choose ${compChoseValue}`;
 		if (btnRock.value === compChoseValue) {
 			msgScore.innerText.append = '`Tie`';
 			j += 1;
 		}
 		else if (btnRock.value != compChoseValue) {
 			if ((btnRock.value === rosci[0]) && compChoseValue === rosci[1]) scoRecOfPly += 1;
-			console.log(`${btnRock.value} is not equal to ${compChoseValue}`)
+			if ((btnRock.value === rosci[0]) && compChoseValue === rosci[2]) scoRecOfComp += 1;
+			// console.log(`${btnRock.value} is not equal to ${compChoseValue}`)
 		}
-	}
-	if (this.id == btnPaper.id) {
-		playerS = this.value;
-		console.log(i += 1)
-		msgScore.innerText = `You Choose: ${playerS} Computer choose ${compChoseValue}  `;
-		// return btnPaper.value;
-		if (btnPaper.value === compChoseValue) {
-			msgScore.innerText= '`Tie`';
-			j += 1;
-		}
-		else if (btnPaper.value != compChoseValue) {
-			if ((btnPaper.value === rosci[0]) && compChoseValue === rosci[1]) scoRecOfPly += 1;
-			console.log(`${btnPaper.value} is not equal to ${compChoseValue}`)
-		}
+		msgScore.innerText = `You Choose: ${btnRock.value} Computer choose ${compChoseValue} -> ${scoRecOfPly} : ${scoRecOfComp}`;
 	}
 	if (this.id == btnScissor.id) {
+		// recive the value of the button
 		playerS = this.value;
-		console.log(i += 1)
-		msgScore.innerText = `You Choose: ${btnScissor.value} Computer choose ${compChoseValue}  `;
+
 		// return btnScissor.value;
 		if (btnScissor.value === compChoseValue) {
 			msgScore.innerText = '`Tie`';
 			j += 1;
 		}
+		// let rosci = ['ROCK', 'SCISSOR', 'PAPER']
 		else if (btnScissor.value != compChoseValue) {
-			if ((btnScissor.value === rosci[0]) && compChoseValue === rosci[1]) scoRecOfPly += 1;
-			console.log(`${btnScissor.value} is not equal to ${compChoseValue}`)
+			if ((btnScissor.value === rosci[1]) && compChoseValue === rosci[2]) scoRecOfPly += 1;
+			if ((btnScissor.value === rosci[1]) && compChoseValue === rosci[0]) scoRecOfComp += 1;
+			// console.log(`${btnScissor.value} is not equal to ${compChoseValue}`)
 		}
 	}
+	if (this.id == btnPaper.id) {
+		playerS = this.value;
+		msgScore.innerText = `You Choose: ${playerS} Computer choose ${compChoseValue} -> ${scoRecOfPly} : ${scoRecOfComp} `;
+		// return btnPaper.value;
+		if (btnPaper.value === compChoseValue) {
+			msgScore.innerText = '`Tie`';
+			j += 1;
+		}
+		else if (btnPaper.value != compChoseValue) {
+			if ((btnPaper.value === rosci[2]) && compChoseValue === rosci[0]) scoRecOfPly += 1;
+			if ((btnPaper.value === rosci[2]) && compChoseValue === rosci[1]) scoRecOfComp += 1;
+			// console.log(`${btnPaper.value} is not equal to ${compChoseValue}`)
+		}
+		msgScore.innerText = `You Choose: ${btnScissor.value} Computer choose ${compChoseValue} -> ${scoRecOfPly} : ${scoRecOfComp} `;
+
+	}
+
 	if (i === 5) {
 		msgBox.style.display = 'none';
 		playBox.style.display = 'none';
 		msgScore.innerText = '';
-	}
-	console.log(`comp increase ${scoRecOfComp}`);
-	console.log(`player increase ${scoRecOfPly}`);
-	console.log(`player ${playerS} computer ${compChoseValue}`)
-	console.log(`i state ${i} player value ${scoRecOfPly} || computer vlaue ${scoRecOfComp} tie result ${j}`)
-}
+		var matchResult = document.createElement('h3');
+		matchResult.id = 'matchResult';
+		matchResult.innerText = 'The Match Result is: ';
+		var scoreReport = document.createElement('div');
+		scoreReport.id = 'scoreReport';
+		if (scoRecOfPly > scoRecOfComp) {
+			scoreReport.innerText = 'Player win';
+		} else if (scoRecOfComp > scoRecOfPly) {
+			scoreReport.innerText = 'Computer win';
+		} else {
+			scoreReport.innerText = 'Tie';
 
+		}
+		var scoreReportMesg = document.createElement('h4');
+		scoreReportMesg.id = 'scoreReportMesg';
+		scoreReportMesg.innerText = `player value ${scoRecOfPly} || computer vlaue ${scoRecOfComp} || tie result ${j} `;
+		container.appendChild(matchResult);
+		container.appendChild(scoreReportMesg);
+		container.appendChild(scoreReport);
+	}
+	console.log(`${scoRecOfPly} : ${scoRecOfComp}`);
+
+	console.log(`player ${playerS} computer ${compChoseValue}`);
+}
