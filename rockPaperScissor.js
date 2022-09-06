@@ -154,7 +154,7 @@ function playerChoose() {
 			if ((btnPaper.value === rosci[2]) && compChoseValue === rosci[1]) scoRecOfComp += 1;
 			// console.log(`${btnPaper.value} is not equal to ${compChoseValue}`)
 		}
-		msgScore.innerText = `You Choose: ${btnScissor.value} Computer choose ${compChoseValue} -> ${scoRecOfPly} : ${scoRecOfComp} `;
+		msgScore.innerText = `You Choose: ${btnPaper.value} Computer choose ${compChoseValue} -> ${scoRecOfPly} : ${scoRecOfComp} `;
 
 	}
 

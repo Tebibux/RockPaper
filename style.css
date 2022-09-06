@@ -3,9 +3,16 @@
 	margin: 0;
 }
 
+.main-container {
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+}
+
 #container {
 	background-color: rgba(15, 195, 255, 0.863);
-	height: 100vh;
+	width: 60%;
+	height: 100%;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -20,13 +27,17 @@
 	align-items: center;
 	justify-content: center;
 	gap: 35px;
-	
+	border: 2px black solid;
+
 }
-.message-box{
+
+.message-box {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	gap: 10px;
+	border: 2px black solid;
+
 }
 
 button {
