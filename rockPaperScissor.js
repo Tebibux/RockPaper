@@ -139,10 +139,11 @@ function playerChoose() {
 			if ((btnScissor.value === rosci[1]) && compChoseValue === rosci[0]) scoRecOfComp += 1;
 			// console.log(`${btnScissor.value} is not equal to ${compChoseValue}`)
 		}
+		msgScore.innerText = `You Choose: ${playerS} Computer choose ${compChoseValue} -> ${scoRecOfPly} : ${scoRecOfComp} `;
+
 	}
 	if (this.id == btnPaper.id) {
 		playerS = this.value;
-		msgScore.innerText = `You Choose: ${playerS} Computer choose ${compChoseValue} -> ${scoRecOfPly} : ${scoRecOfComp} `;
 		// return btnPaper.value;
 		if (btnPaper.value === compChoseValue) {
 			msgScore.innerText = '`Tie`';

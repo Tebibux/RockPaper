@@ -4,6 +4,8 @@
 }
 
 #container {
+	background-color: rgba(15, 195, 255, 0.863);
+	height: 100vh;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
